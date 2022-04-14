@@ -2,9 +2,9 @@
 This is the third project for the udacity junior frontend nanodegree. This project is all about converting a static landing page to a dynamic landing page using javascript
 
 ## Table of Contents
-dynamically Build the nav
-Add class 'active' to section when near top of viewport
-Scroll to section on link click
+* dynamically Build the nav
+* Add class 'active' to section when near top of viewport
+* Scroll to section on link click
 
 
 * [Instructions](#instructions)
