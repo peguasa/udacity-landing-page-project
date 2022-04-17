@@ -56,10 +56,10 @@ main {
     padding-top: 3em;
 }
 
-section {
+ section {
     position: relative;
     min-height: 80vh;
-}
+} 
 
 
 /* ---- Module Rules ---- */
@@ -78,12 +78,12 @@ section {
 
 }
 
-.navbar__menu .menu__link {
+ .navbar__menu .menu__link {
     
     font-weight: bold;
     text-decoration: none;
     color: #000;
-}
+} 
 
 .navbar__menu .menu__link:hover {
     background: #333;

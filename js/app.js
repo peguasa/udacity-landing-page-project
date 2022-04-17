@@ -23,8 +23,7 @@
  * 
 */
 const navigation = document.getElementById("navbar__list"); 
-const sections = document.querySelectorAll("section");
-const menuLink = document.querySelectorAll(".menu__link");
+const sections = document.querySelectorAll('section');
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,64 +38,63 @@ const menuLink = document.querySelectorAll(".menu__link");
 
 // build the nav
 const navBar = () => {
-    //using for of loop... to dynamically add items to the nav bar 
-    for (section of sections) {
-        const listItem = document.createElement("li");
-        const sectionId = section.getAttribute("id");
-        const sectionData = section.getAttribute("data-nav");
-        listItem.innerHTML = `<a class='menu__link' href='#${sectionId}'>${sectionData}</a>`;
-        navigation.appendChild(listItem);
-    }
+    let navList = '';
+    sections.forEach(function(sections){
+        const sectionId = sections.id
+        const sectionData = sections.dataset.nav
+        navList += `<li><a class= "menu__link" href="#${sectionId}">${sectionData}</a></li>`
+    });
+
+    navigation.innerHTML = navList;
 };
 navBar();
 
 
 
+
 // Add class 'active' to section when near top of viewport
+ const inViewport = (el) => {
+     let rect = el.getBoundingClientRect();
+     return rect.top <= 250 && rect.bottom >= 250;
+ }
 
-const sectionInViewport = (inView) => {
-    // determine if section is near top of viewport
-    let rect = inView.getBoundingClientRect();
-    return rect.top <= 150 && rect.bottom >= 150;
-};
+ function sectionActivation () {
+     sections.forEach((section) => {
+         if (inViewport(section)){
+             section.classList.add('your-active-class')
+         }
+         else{
+            section.classList.remove('your-active-class') 
+         }
+     });
+ }
+ sectionActivation ();
+ document.addEventListener('scroll', sectionActivation);
 
-// function to add active class to section in viewport
-const addActive = () => {
-    for (section of sections) {
-        if (sectionInViewport(section)) {
-            if (!section.classList.contains("your-active-class")) {
-                section.classList.add("your-active-class");
-            }
-        } else {
-            section.classList.remove("your-active-class");
-        }
-    }
-};
-document.addEventListener("scroll", addActive);
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
+// /**
+//  * End Main Functions
+//  * Begin Events
+//  * 
+// */
 
-// Build menu 
+// // Build menu 
 
-// Scroll to section on link click
-const smoothScroll = () => {
-    document.querySelectorAll(".menu__link").forEach((anchor) => {
-        anchor.addEventListener("click", function (event) {
-            event.preventDefault();
-            document.querySelector(anchor.getAttribute("href")).scrollIntoView({
-                behavior: "smooth",
-            });
-        });
+// // Scroll to section on link click
+
+const clickLink = (event) => {
+    smoothScroll(event);
+}
+
+const smoothScroll = (event) => {
+    event.preventDefault();
+    const targetId = event.target.getAttribute("href")
+    document.querySelector(targetId).scrollIntoView({
+        behavior: "smooth"
     });
-};
-
-smoothScroll();
-
-// Set sections as active
+}
+document.addEventListener('click', clickLink);
+// // Set sections as active
 
 // Add class 'active' to section when near top of viewport
 
