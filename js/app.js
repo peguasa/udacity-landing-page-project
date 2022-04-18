@@ -51,11 +51,9 @@ const sections = document.querySelectorAll('section');
 const navBar = () => {
 
             sections.forEach((sections) => {
-             const sectionId = sections.id;
-             const sectionData = sections.dataset.nav;
              const newEl = document.createElement('li');
              console.log(newEl)
-             newEl.innerHTML = `<a class= "menu__link" href="#${sectionId}">${sectionData}</a>`;
+             newEl.innerHTML = `<a class= "menu__link" href="#${sections.id}">${sections.dataset.nav}</a>`;
             navigation.appendChild(newEl);
         });
 }
