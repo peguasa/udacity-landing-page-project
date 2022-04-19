@@ -37,17 +37,6 @@ const sections = document.querySelectorAll('section');
 */
 
 // build the nav
-// const navBar = () => {
-//     let navList = '';
-//     sections.forEach(function(sections){
-//         const sectionId = sections.id
-//         const sectionData = sections.dataset.nav
-//         navList += `<li><a class= "menu__link" href="#${sectionId}">${sectionData}</a></li>`
-//     });
-
-//     navigation.innerHTML = navList;
-// };
-// navBar();
 const navBar = () => {
 
             sections.forEach((sections) => {
